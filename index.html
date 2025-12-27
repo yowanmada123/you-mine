@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Untuk Iva</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Poppins:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #fbf9f6;
+        color: #444;
+        overflow: hidden;
+      }
+      section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        text-align: center;
+      }
+      .container {
+        max-width: 560px;
+      }
+      h1,
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-weight: 500;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.9;
+        color: #555;
+      }
+      .fade {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: 1.4s ease;
+      }
+      .fade.show {
+        opacity: 1;
+        transform: none;
+      }
+      button {
+        margin-top: 30px;
+        padding: 14px 32px;
+        border: none;
+        border-radius: 30px;
+        background: #c9a96a;
+        color: #fff;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      .secondary {
+        background: transparent;
+        border: 1px solid #ccc;
+        color: #666;
+        margin-left: 10px;
+      }
+      .photo {
+        width: 100%;
+        max-width: 420px;
+        border-radius: 12px;
+        margin: 0 auto 28px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      }
+      .hidden {
+        display: none;
+      }
+      .note {
+        font-size: 14px;
+        color: #777;
+        margin-top: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <audio id="music" loop>
+      <source src="music.mp3" />
+    </audio>
+
+    <!-- 1 -->
+    <section id="s1">
+      <div class="container fade show">
+        <h1>Untuk Iva Laili Fajarwati</h1>
+        <p>
+          Ada sesuatu yang ingin aku sampaikan.<br />
+          Pelan-pelan.<br />
+          Dengan jujur.
+        </p>
+        <button onclick="next()">Baca Perlahan</button>
+      </div>
+    </section>
+
+    <!-- PHOTO 1 -->
+    <section id="s2" class="hidden">
+      <div class="container fade">
+        <img src="3.jpeg" class="photo" />
+        <p>Beberapa kenangan tidak pernah benar-benar pergi.</p>
+      </div>
+    </section>
+
+    <!-- PHOTO 2 -->
+    <section id="s3" class="hidden">
+      <div class="container fade">
+        <img src="6.jpeg" class="photo" />
+        <p>
+          Waktu boleh berjalan,<br />
+          tapi rasa sering tertinggal.
+        </p>
+      </div>
+    </section>
+
+    <!-- APOLOGY -->
+    <section id="s4" class="hidden">
+      <div class="container fade">
+        <h2>Permintaan Maaf</h2>
+        <p>
+          Aku minta maaf atas kata-kata kasar,<br />
+          emosi yang tidak terkendali,<br />
+          dan sikap yang melukai perasaanmu.<br /><br />
+          Aku sadar, aku gagal menjaga orang yang seharusnya paling aku jaga.
+        </p>
+      </div>
+    </section>
+
+    <!-- PHOTO 3 -->
+    <section id="s5" class="hidden">
+      <div class="container fade">
+        <img src="9.jpeg" class="photo" />
+        <p>
+          Kadang yang paling kita rindukan<br />
+          adalah rasa aman bersama seseorang.
+        </p>
+      </div>
+    </section>
+
+    <!-- REFLECTION -->
+    <section id="s6" class="hidden">
+      <div class="container fade">
+        <h2>Aku Belajar</h2>
+        <p>
+          Mencintai bukan tentang siapa yang paling benar.<br />
+          Tapi siapa yang mau belajar menahan diri,<br />
+          menjaga ucapan,<br />
+          dan bertanggung jawab atas perasaannya.
+        </p>
+      </div>
+    </section>
+
+    <!-- PHOTO 4 -->
+    <section id="s7" class="hidden">
+      <div class="container fade">
+        <img src="11.jpeg" class="photo" />
+        <p>
+          Jika ada satu hal yang belum berubah,<br />
+          itu adalah perasaanku padamu.
+        </p>
+      </div>
+    </section>
+
+    <!-- REQUEST -->
+    <section id="s8" class="hidden">
+      <div class="container fade">
+        <h2>Satu Permintaan</h2>
+        <p>
+          Jika masih ada ruang di hatimu,<br />
+          aku ingin kita mencoba kembali.<br /><br />
+          Pelan-pelan.<br />
+          Dengan cara yang lebih baik.
+        </p>
+        <button onclick="accept()">Aku ingin mencoba lagi</button>
+        <button class="secondary">Aku butuh waktu</button>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section id="s9" class="hidden">
+      <div class="container fade">
+        <h2>Terima Kasih</h2>
+        <p>
+          Apa pun keputusanmu,<br />
+          aku menghargainya sepenuhnya.<br /><br />
+          Terima kasih sudah membaca ini sampai akhir.
+        </p>
+        <div class="note">— dengan tulus</div>
+      </div>
+    </section>
+
+    <script>
+      let current = 1;
+      const total = 9;
+
+      function next() {
+        if (current === 1) {
+          document.getElementById("music").play();
+        }
+        document.getElementById("s" + current).classList.add("hidden");
+        current++;
+        const el = document.getElementById("s" + current);
+        if (el) {
+          el.classList.remove("hidden");
+          setTimeout(() => {
+            el.querySelector(".fade").classList.add("show");
+          }, 200);
+        }
+      }
+
+      document.body.addEventListener("click", (e) => {
+        if (e.target.tagName !== "BUTTON") {
+          if (current > 1 && current < total) {
+            next();
+          }
+        }
+      });
+
+      function accept() {
+        alert(
+          "Terima kasih sudah membaca dengan hati yang terbuka. Kirimkan ❤️ di Whatsapp ya."
+        );
+      }
+    </script>
+  </body>
+</html>
